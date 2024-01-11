@@ -4,7 +4,7 @@ file storge class
 """
 from Base import BaseModel
 import json
-import module.user import User
+from module.user import User
 
 
 class FileStorage:
@@ -31,8 +31,8 @@ class FileStorage:
         convert to json string
         """
         with open(self.__file_path, "w") as name:
-            json.dump({key: value.to_dict() for
-                        key, value in self.__objects.items()}, name)
+            json.dump({key: value.to_dict()
+                     for key, value in self.__objects.items()}, name)
 
     def reload(self):
         """
