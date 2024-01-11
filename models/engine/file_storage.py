@@ -2,9 +2,8 @@
 """
 file storge class
 """
-from Base import BaseModel
 import json
-from module.user import User
+import models
 
 
 class FileStorage:
@@ -20,29 +19,35 @@ class FileStorage:
         """
         return self.__objects
 
-    def new(self, object):
+    def new(self, obj):
         """
         make a new objects
         """
-        self.__objects[object.__class__.__name__ + '.' + str(object)] = object
+        key = str(obj.__class__.__name__) + "." + str(obj.id)
+        value_dict = obj
+        FileStorage.__objects[key] = value_dict
 
     def save(self):
         """
         convert to json string
         """
-        with open(self.__file_path, "w") as name:
-            json.dump({key: value.to_dict()
-                     for key, value in self.__objects.items()}, name)
+        objects_dict = {}
+        for key, val in FileStorage.__objects.items():
+            objects_dict[key] = val.to_dict()
+
+        with open(FileStorage.__file_path, mode='w', encoding="UTF8") as fd:
+            json.dump(objects_dict, fd)
 
     def reload(self):
         """
         convert to string
         """
         try:
-            with open(self.__file_path, "r") as name:
-                Dict = json.loads(name.read())
-                for value in Dict.values():
-                    clsName = value["__class__"]
-                    self.new(eval(clsName)(**value))
-        except Exception:
+            with open(FileStorage.__file_path, encoding="UTF8") as fd:
+                FileStorage.__objects = json.load(fd)
+            for key, val in FileStorage.__objects.items():
+                class_name = val["__class__"]
+                class_name = models.classes[class_name]
+                FileStorage.__objects[key] = class_name(**val)
+        except FileNotFoundError:
             pass
