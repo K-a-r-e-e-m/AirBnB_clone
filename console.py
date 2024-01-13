@@ -1,7 +1,12 @@
+#!/usr/bin/python3
+"""This module for HBNBCommand class that inherits from Cmd class 
+from cmd module cmd.Cmd to make a command interpriter
+"""
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
-    """Tis  is a simple command interpreter"""
+    """Tis  is a simple command interprete"""
 
     prompt = "(hbnb)"
 
