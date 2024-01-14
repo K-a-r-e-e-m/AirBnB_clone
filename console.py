@@ -3,6 +3,7 @@
 from cmd module cmd.Cmd to make a command interpriter
 """
 
+import shlex
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -37,10 +38,10 @@ class HBNBCommand(cmd.Cmd):
         saves it to the JSON file
         and prints the id
         """
-        self.comnd = line.split()
-        if (len(self.comnd) < 2):
+        line = shlex.split(" ")
+        if (len(line) < 2):
             print('** class name missing **')
-        elif (self.comnd[2]):
+        elif :
             print("** class doesn't exist **")
         else:
             storage.save()
