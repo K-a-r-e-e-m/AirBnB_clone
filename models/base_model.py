@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Defines the BaseModel class."""
+"""
+BaseModel class.
+"""
 import models
 from uuid import uuid4
 from datetime import datetime
@@ -12,12 +14,8 @@ Base = declarative_base()
 
 
 class BaseModel:
-    """Defines the BaseModel class.
-
-    Attributes:
-        id (sqlalchemy String): The BaseModel id.
-        created_at (sqlalchemy DateTime): The datetime at creation.
-        updated_at (sqlalchemy DateTime): The datetime of last update.
+    """
+    base class
     """
 
     id = Column(String(60), primary_key=True, nullable=False)
@@ -25,11 +23,8 @@ class BaseModel:
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel.
-
-        Args:
-            *args (any): Unused.
-            **kwargs (dict): Key/value pairs of attributes.
+        """
+        Initialize a new class BaseModel.
         """
         self.id = str(uuid4())
         self.created_at = self.updated_at = datetime.utcnow()
@@ -41,30 +36,34 @@ class BaseModel:
                     setattr(self, key, value)
 
     def save(self):
-        """Update updated_at with the current datetime."""
+        """
+        save method that update the time
+        """
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """Return a dictionary representation of the BaseModel instance.
-
-        Includes the key/value pair __class__ representing
-        the class name of the object.
         """
-        my_dict = self.__dict__.copy()
-        my_dict["__class__"] = str(type(self).__name__)
-        my_dict["created_at"] = self.created_at.isoformat()
-        my_dict["updated_at"] = self.updated_at.isoformat()
-        my_dict.pop("_sa_instance_state", None)
+        Return a dictionary representation of the BaseModel instance.
+        """
+        myDict = self.__dict__.copy()
+        myDict["__class__"] = str(type(self).__name__)
+        myDict["created_at"] = self.created_at.isoformat()
+        myDict["updated_at"] = self.updated_at.isoformat()
+        myDict.pop("_sa_instance_state", None)
         return my_dict
 
     def delete(self):
-        """Delete the current instance from storage."""
+        """
+        Delete method
+        """
         models.storage.delete(self)
 
     def __str__(self):
-        """Return the print/str representation of the BaseModel instance."""
-        d = self.__dict__.copy()
-        d.pop("_sa_instance_state", None)
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, d)
+        """
+        Return presentaion of the class from the user pov
+        """
+        dct = self.__dict__.copy()
+        dct.pop("_sa_instance_state", None)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, dct)

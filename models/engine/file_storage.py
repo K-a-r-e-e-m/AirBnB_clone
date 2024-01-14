@@ -1,55 +1,53 @@
 #!/usr/bin/python3
-'''
-    Define class FileStorage
-'''
+"""
+    class FileStorage
+"""
 import json
 import models
 
 
 class FileStorage:
-    '''
-        Serializes instances to JSON file and deserializes to JSON file.
-    '''
+    """
+        file storage.
+    """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        '''
-            Return the dictionary
-        '''
+        """
+            Return a dictionary
+        """
         return self.__objects
 
     def new(self, obj):
-        '''
-            Set in __objects the obj with key <obj class name>.id
-            Aguments:
-                obj : An instance object.
-        '''
+        """
+            name method
+        """
         key = str(obj.__class__.__name__) + "." + str(obj.id)
         value_dict = obj
         FileStorage.__objects[key] = value_dict
 
     def save(self):
-        '''
-            Serializes __objects attribute to JSON file.
-        '''
-        objects_dict = {}
-        for key, val in FileStorage.__objects.items():
-            objects_dict[key] = val.to_dict()
+        """
+            convert to json
+        """
+        dct = {}
+        for key, value in FileStorage.__objects.items():
+            dct[key] = value.to_dict()
 
-        with open(FileStorage.__file_path, mode='w', encoding="UTF8") as fd:
-            json.dump(objects_dict, fd)
+        with open(FileStorage.__file_path, mode='w', encoding="UTF8") as name:
+            json.dump(dct, name)
 
     def reload(self):
-        '''
-            Deserializes the JSON file to __objects.
-        '''
+        """
+            convert to string
+        """
         try:
-            with open(FileStorage.__file_path, encoding="UTF8") as fd:
-                FileStorage.__objects = json.load(fd)
-            for key, val in FileStorage.__objects.items():
-                class_name = val["__class__"]
+            with open(FileStorage.__file_path, encoding="UTF8") as name:
+                FileStorage.__objects = json.load(name)
+            for key, value in FileStorage.__objects.items():
+                class_name = value["__class__"]
                 class_name = models.classes[class_name]
-                FileStorage.__objects[key] = class_name(**val)
+                FileStorage.__objects[key] = class_name(**value)
         except FileNotFoundError:
             pass
