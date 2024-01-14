@@ -1,42 +1,38 @@
 #!/usr/bin/python3
-"""
-file storge class
-"""
+'''
+    Define class FileStorage
+'''
 import json
 import models
-from models.user import User
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 
 
 class FileStorage:
-    """
-    file storge class
-    """
+    '''
+        Serializes instances to JSON file and deserializes to JSON file.
+    '''
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """
-        return all objects
-        """
+        '''
+            Return the dictionary
+        '''
         return self.__objects
 
     def new(self, obj):
-        """
-        make a new objects
-        """
+        '''
+            Set in __objects the obj with key <obj class name>.id
+            Aguments:
+                obj : An instance object.
+        '''
         key = str(obj.__class__.__name__) + "." + str(obj.id)
         value_dict = obj
         FileStorage.__objects[key] = value_dict
 
     def save(self):
-        """
-        convert to json string
-        """
+        '''
+            Serializes __objects attribute to JSON file.
+        '''
         objects_dict = {}
         for key, val in FileStorage.__objects.items():
             objects_dict[key] = val.to_dict()
@@ -45,9 +41,9 @@ class FileStorage:
             json.dump(objects_dict, fd)
 
     def reload(self):
-        """
-        convert to string
-        """
+        '''
+            Deserializes the JSON file to __objects.
+        '''
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
                 FileStorage.__objects = json.load(fd)
