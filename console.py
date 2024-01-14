@@ -7,6 +7,12 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -30,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
         """This method creates a new instance of BaseModel
         saves it to the JSON file
         and prints the id
-        """ 
+        """
         self.comnd = line.split()
         if (len(self.comnd) < 2):
             print('** class name missing **')
@@ -38,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             storage.save()
-            #print id            
+            # print id
 
     def do_show(self):
         """This method prints the string representation of an instance
