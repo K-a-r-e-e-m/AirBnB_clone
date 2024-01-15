@@ -41,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         line = shlex.split(" ")
         if (len(line) < 2):
             print('** class name missing **')
-        elif :
+        elif (line[0] is None) 
             print("** class doesn't exist **")
         else:
             storage.save()
