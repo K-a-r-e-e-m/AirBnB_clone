@@ -41,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         self.comnd = line.split()
         if (len(self.comnd) < 2):
             print('** class name missing **')
-        elif (self.comnd[2]) 
+        elif (self.comnd[2]): 
             print("** class doesn't exist **")
         else:
             storage.save()
