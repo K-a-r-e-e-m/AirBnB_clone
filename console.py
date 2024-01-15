@@ -38,10 +38,10 @@ class HBNBCommand(cmd.Cmd):
         saves it to the JSON file
         and prints the id
         """
-        line = shlex.split(" ")
-        if (len(line) < 2):
+        self.comnd = line.split()
+        if (len(self.comnd) < 2):
             print('** class name missing **')
-        elif (line[0] is None) 
+        elif (self.comnd[2]) 
             print("** class doesn't exist **")
         else:
             storage.save()
