@@ -62,6 +62,7 @@ button:hover {
     margin-top: 9px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
+    z-index: 100;
     }
 .locations:hover .popover, .amenities:hover .popover{
     display: flex;
