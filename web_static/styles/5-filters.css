@@ -1,47 +1,49 @@
-.filters{
+.filters {
     background-color: white;
+    display: flex;
     height: 70px;
     width: 100%;
-    border: solid 1px #dddddd;
-    border-radius: 4px;
-    text-align: right;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px; 
+    position: relative;
 }
-button{
-    margin: 11px 30px 11px 0px;
+.filters button {
     font-size: 18px;
     background-color: #FF5A5F;
+    color: #FFFFFF;
     height: 48px;
-    color: #ffffff;
     width: 20%;
-    border: none;
+    border: 0;
     border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    margin: 10px;
 }
-button:hover{
-    opacity: 0.9;
+button:hover {
+    opacity: 90%;
 }
-.locations{
+
+
+.filters div {
     height: 100%;
     width: 25%;
-    border-right: 1px solid #dddddd;
-    float: left;
-    margin-left: 30px;
-    text-align: left;
+    line-height: 0;
+    align-content: center;
+    /*Center the content of flex (filters) --> the box */
 }
-.amenities{
-    height: 100%;
-    width: 25%;
-    float: left;
-    text-align: left;
-    margin-left: 30px;
+
+.locations {
+    border-right: 1px solid #DDDDDD;
 }
-h3{
+
+.filters div h3 {
     font-weight: 600;
-    margin: 17px 0 0 0;
-    padding: 0px;
+    position: relative;
+    left: 50px;
 }
-h4{
+.filters div h4 {
     font-weight: 400;
     font-size: 14px;
-    margin: 0px;
-    padding: 0px;
+    position: relative;
+    left: 50px;
 }
