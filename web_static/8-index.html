@@ -1,197 +1,193 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/2-common.css">
-    <link rel="stylesheet" href="styles/2-footer.css">
-    <link rel="stylesheet" href="styles/2-header.css">
-    <link rel="stylesheet" href="styles/4-filters.css">
-    <link rel="stylesheet" href="styles/7-places.css">
-    <link rel="icon" href="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png">
-</head>
-<body>
-    <header>
-        <div class="logo"></div>
-    </header>
-    <div class="container">
-        <section class="filters">
-            <button type="button">Search</button>
-            <div class="locations">
-                <h3>States</h3>
-                <h4>fake content</h4>
-                <ul class="popover">
-                    <li><h2>Arizona:</h2></li>
-                    <li>
-                        <ul class="list">
-                            <li>page</li>
-                            <li>page</li>
-                        </ul>
-                    </li>
-                    <li><h2>California:</h2></li>
-                    <li>
-                        <ul class="list">
-                            <li>page</li>
-                            <li>page</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="amenities">
-                <h3>Amenities</h3>
-                <h4>fake content</h4>
-                <ul class="popover">
-                    <li>content</li>
-                    <li>content</li>
-                </ul>
-            </div>
-        </section>
-        <section class="places">
-            <div class="title">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>AirBnB Clone</title>
+        
+        <link rel="stylesheet" href="styles/4-common.css">
+        <link rel="stylesheet" href="styles/3-header.css">
+        <link rel="stylesheet" href="styles/3-footer.css">
+        <link rel="stylesheet" href="styles/6-filters.css">
+        <link rel="stylesheet" href="styles/8-places.css">
+        <link rel="icon" type="image/png" href="images/icon.png">
+    </head>
+
+    <body>
+
+        <header>
+            <input class="hbnb_logo" type="image" src="images/logo.png" alt="hbnb_logo">
+        </header>
+
+        <div class="container">
+            <section class="filters">
+                
+                <button>
+                    Search
+                </button>
+                
+                <div class="locations">
+                    <h3>States</h3>
+                    <h4>California, Arizona...</h4>
+                    <ul class="popover">
+                        <li>
+                            <h2>Arizona:</h2>
+                            <ul>
+                                <li>Page</li>
+                                <li>Page2</li>                            
+                            </ul>                            
+                        </li>
+                        <li>
+                            <h2>California:</h2>
+                            <ul>
+                                <li>San Francisco</li>
+                                <li>Los Altos</li>                            
+                            </ul>                            
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>Internet, Kitchen...</h4>
+                    <ul class="popover">
+                        <li>
+                            <ul>
+                                <li>Internet</li>
+                                <li>TV</li>
+                                <li>Kitchen</li>
+                                <li>Iron</li>                            
+                            </ul>                            
+                        </li>
+
+                    </ul>
+                </div>
+            
+            </section>
+        
+            <section class="places">
                 <h1>Places</h1>
-            </div>
-            <div class="article">
+
                 <article>
-                    <div class="price_title">
-                        <div class="article_title">
-                            <h2>My Home</h2>
-                        </div>
+                    <div class="first">
+
+                        <h2>My home</h2>
+
                         <div class="price_by_night">
-                            <div class="price">
-                                $60
-                            </div>
+                            $80
                         </div>
-                    </div>
-                    <div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon">
+                    
+                        <div class="information">
+                            <div class="max_guest">
+                                <input type="image" src="/web_static/images/icon_group.png" alt="Icon">
+                                2 Guests
                             </div>
-                            <div class="guest_number">
-                                <h2>2 Guests</h2>
+                            <div class="number_rooms">
+                                <input type="image" src="/web_static/images/icon_bed.png" alt="Icon">
+                                1 Bedroom
                             </div>
+                            <div class="number_bathrooms">
+                                <input type="image" src="/web_static/images/icon_bath.png" alt="Icon">
+                                1 Bathroom
+                            </div>
+                        </div>      
+                        
+                        <div class="user">
+                            <b>Owner: </b>Kareem Hany
                         </div>
-                        <div class="number_rooms">
-                            <div class="rooms_icon">
-                            </div>
-                            <div class="rooms_number">
-                                <h2>1 Bedroom</h2>
-                            </div>
+                        
+                        <div class="description">
+                            <p>This is lovely 1 bedroom and 1 bathroom apartment that can accomodate 2 people.
+                                 it locates at the center of Shanghai and next to subway line 1.
+                                 1 stop to People Square, 2 stops to Bund, 3 stops to Jingan Temple.
+                            </p>
                         </div>
-                        <div class="number_bathrooms">
-                            <div class="bathrooms_icon">
-                            </div>
-                            <div class="bathrooms_number">
-                                <h2>1 Bathroom</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user">
-                        <b>Owner:</b> Grace Hopper
-                    </div>
-                    <div class="description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
-                    </div>
-                </article>
-                <article>
-                    <div class="price_title">
-                        <div class="article_title">
-                            <h2>My Home</h2>
-                        </div>
-                        <div class="price_by_night">
-                            <div class="price">
-                                $60
-                            </div>
-                        </div>
-                    </div>
-                    <div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon">
-                            </div>
-                            <div class="guest_number">
-                                <h2>2 Guests</h2>
-                            </div>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="rooms_icon">
-                            </div>
-                            <div class="rooms_number">
-                                <h2>1 Bedroom</h2>
-                            </div>
-                        </div>
-                        <div class="number_bathrooms">
-                            <div class="bathrooms_icon">
-                            </div>
-                            <div class="bathrooms_number">
-                                <h2>1 Bathroom</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user">
-                        <b>Owner:</b> Grace Hopper
-                    </div>
-                    <div class="description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
 
                     </div>
-                </article>
-                <article>
-                    <div class="price_title">
-                        <div class="article_title">
-                            <h2>My Home</h2>
-                        </div>
+
+                    <div class="second">
+                        <h2>Tiny house</h2>
                         <div class="price_by_night">
-                            <div class="price">
-                                $60
-                            </div>
+                            $65
                         </div>
-                    </div>
-                    <div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon">
+                    
+                        <div class="information">
+                            <div class="max_guest">
+                                <input type="image" src="/web_static/images/icon_group.png" alt="Icon">
+                                4 Guests
                             </div>
-                            <div class="guest_number">
-                                <h2>2 Guests</h2>
+                            <div class="number_rooms">
+                                <input type="image" src="/web_static/images/icon_bed.png" alt="Icon">
+                                2 Bedroom
                             </div>
+                            <div class="number_bathrooms">
+                                <input type="image" src="/web_static/images/icon_bath.png" alt="Icon">
+                                1 Bathroom
+                            </div>
+                        </div>      
+                        
+                        <div class="user">
+                            <b>Owner: </b>Adrienne
                         </div>
-                        <div class="number_rooms">
-                            <div class="rooms_icon">
-                            </div>
-                            <div class="rooms_number">
-                                <h2>1 Bedroom</h2>
-                            </div>
+                        
+                        <div class="description">
+                            <p>Our place is a private, affordable stand-alone guest house centrally located just minutes to 
+                                French Quarters, downtown, the Fair Grounds (Jazz Fest) and City Park. 
+                                The guest house is a quaint, 400 square ft. with a full bath, mini kitchen, & living room.
+                                The extra high ceilings make the home feel more spacious. the sofa converts to a bed also.
+                                We have a hand made counter area that adds character to the room and a great porch/deck 
+                                to relax on and have a glass of Merlot.
+                            </p>
                         </div>
-                        <div class="number_bathrooms">
-                            <div class="bathrooms_icon">
-                            </div>
-                            <div class="bathrooms_number">
-                                <h2>1 Bathroom</h2>
-                            </div>
+
+                    </div>
+
+                    <div class="third">
+                        <h2>A suite</h2>   
+                        <div class="price_by_night">
+                            $190
                         </div>
+                    
+                        <div class="information">
+                            <div class="max_guest">
+                                <input type="image" src="/web_static/images/icon_group.png" alt="Icon">
+                                6 Guests
+                            </div>
+                            <div class="number_rooms">
+                                <input type="image" src="/web_static/images/icon_bed.png" alt="Icon">
+                                3 Bedroom
+                            </div>
+                            <div class="number_bathrooms">
+                                <input type="image" src="/web_static/images/icon_bath.png" alt="Icon">
+                                2 Bathroom
+                            </div>
+                        </div>      
+                        
+                        <div class="user">
+                            <b>Owner: </b>Bill Zuckerberg
+                        </div>
+                        
+                        <div class="description">
+                            <p>Newly renovated spacious 2 bedrooms 2 baths in cozy Gastown style unit with the views
+                                of North Shore mountains. Woodward's landmark building situated at the historic heart
+                                of Vancouver.
+                            </p>
+                        </div>
+             
                     </div>
-                    <div class="user">
-                        <b>Owner:</b> Grace Hopper
-                    </div>
-                    <div class="description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
-                    </div>
+
                 </article>
-            </div>
-        </section>
-    </div>
-    <footer>Best School</footer>
-</body>
+
+            </section>
+
+        </div>
+
+
+        <footer>
+            <p>Best School</p>
+        </footer>
+        
+    </body>
+
 </html>
