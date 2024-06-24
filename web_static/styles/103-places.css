@@ -1,0 +1,311 @@
+.places h1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+.places article h2 {
+    font-size: 30px; 
+    text-align: center;
+    margin: 0;
+}
+.places article .first, .second, .third {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+.places article {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+}
+.places article .first {
+        grid-column: 1 / 3;
+        position: relative;
+}
+.places article .second {
+        grid-column: 3 / 5;
+        position: relative;
+}
+.places article .third {
+        grid-column: 2 / 4;
+        position: relative;
+}
+article .price_by_night {
+    color: #FF5A5F;
+    border: 4px solid #FF5A5F;
+    border-radius: 50%;
+    padding: 7px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px;
+} 
+article .information {
+    height: 80px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 55px 0 20px 0;
+    align-items: center;
+}   
+article .information input {
+    display: flex;
+    position: relative;
+    left: 10px;
+}
+
+
+article .amenities{
+    margin-top: 40px;
+    margin-bottom: 0;
+    height: auto;
+    width: auto;
+}
+article .amenities ul input{
+    scale: 0.5;
+}
+article .amenities ul{
+    list-style: none;    
+    display: inline;
+    padding: 0; 
+}
+article .amenities li{
+    height: 35px;
+}
+article .amenities li span{
+    position: relative;
+    bottom: 18px;
+}
+article .amenities h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: start;
+    padding: 10px;
+}
+
+
+article .reviews h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: start;
+    padding: 10px;
+}
+article .reviews ul{
+    list-style: none;   
+    position: relative;
+    right: 27px; 
+}
+article .reviews{
+    margin-top: 40px;
+    margin-bottom: 0;
+    height: auto;
+    width: auto;
+}
+
+@media (min-width: 1800px) {
+    .places article {
+        display: flex;
+    }
+    .container {
+        max-width: 2000px;
+        margin: 30px auto;
+        position: relative;
+        align-content: center;
+        padding: 10px;
+    }
+    p {
+        font-size: large;
+    }
+    
+    .places article .first, .second, .third {
+        width: 100%;
+    }
+    .filters div h3 {
+        font-weight: 700;
+        font-size: large;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+    }
+    .filters div h4 {
+        font-weight: 400;
+        font-size: 20px;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+
+    }
+
+    article .price_by_night {
+        color: #FF5A5F;
+        border: 4px solid #FF5A5F;
+        border-radius: 50%;
+        padding: 5px;
+        min-width: 70px;
+        height: 70px;
+        font-size: 20px;
+        display: flex;  
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 15px;
+    } 
+
+}
+@media (max-width: 900px) {
+
+    .places article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .places article .first, .second, .third {
+        width: 85%;
+    }
+    .filters div h3 {
+        font-weight: 600;
+        font-size: medium;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+    }
+    .filters div h4 {
+        font-weight: 400;
+        font-size: 15px;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+
+    }
+    .popover h2 {
+        font-size: 16px;
+        margin: 5px 0 0 0;
+    
+    }
+    .popover li{
+        list-style: none;
+        position: relative;
+        right: 25px;
+    }
+
+}
+@media (max-width: 500px) {
+    .places h1 {
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+        margin-left: 15px;
+        margin-bottom: 0;
+    }
+    .places article h2 {
+        font-size: 20px; 
+        text-align: center;
+        position: relative;
+        right: 20px;
+        margin: 0;
+    }
+    .places article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .places article .first, .second, .third {
+        width: 85%;
+    }
+    .filters {
+        background-color: white;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        border-radius: 4px; 
+        position: relative;
+    }
+    .filters button {
+        font-size: 12px;
+        background-color: #FF5A5F;
+        color: #FFFFFF;
+        height: 28px;
+        width: 20%;
+        border: 0;
+        border-radius: 4px;
+        position: absolute;
+        right: 10px;
+        margin: 10px;
+    }
+        
+    .locations, .amenities{
+        height: 100%;
+        width: 25%;
+        align-content: center;
+        position: relative;
+        /*Center the content of flex (filters) --> the box */
+        
+    }
+
+    .locations {
+        border-right: 1px solid #DDDDDD;
+    }
+
+    .filters div h3 {
+        font-weight: 600;
+        font-size: small;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+    }
+    .filters div h4 {
+        font-weight: 400;
+        font-size: 10px;
+        position: relative;
+        left: 10px;
+        margin: 0; /* Remove default margin */
+
+    }
+
+    article .price_by_night {
+        color: #FF5A5F;
+        border: 4px solid #FF5A5F;
+        border-radius: 50%;
+        padding: 5px;
+        min-width: 40px;
+        height: 40px;
+        font-size: 20px;
+        display: flex;  
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 15px;
+    } 
+    .popover h2 {
+        font-size: 12px;
+        margin-right: 5px;
+    
+    }
+    .popover li{
+        font-size: 10px;
+        list-style: none;
+        position: relative;
+        right: 30px;
+    }
+    
+}

@@ -9,7 +9,7 @@
 }
 .filters button {
     font-size: 18px;
-    background-color: #FF5A5F;
+    background-color: #FF5A5F; /* To Improve Accessability #D32F2F */
     color: #FFFFFF;
     height: 48px;
     width: 20%;
