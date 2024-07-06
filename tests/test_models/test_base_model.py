@@ -34,6 +34,19 @@ class TestBaseModel(unittest.TestCase):
         out = self.inst.to_dict()
         self.assertEqual(type(out), dict)
 
+    def test_to_dict_created_at(self):
+        '''Test the method that return dictionary of instance'''
+        out = self.inst.to_dict()
+        created = out['created_at']
+        self.assertEqual(created, self.inst.created_at.isoformat())
+
+    def test_to_dict_updated_at(self):
+        '''Test the method that return dictionary of instance'''
+        out = self.inst.to_dict()
+        updated = out['updated_at']
+        self.assertEqual(updated, self.inst.updated_at.isoformat())
+
+
     def test__str__(self):
         '''test String representation of instance'''
         out = f'[{self.inst.__class__.__name__}] ({self.inst.id}) {self.inst.__dict__}'
