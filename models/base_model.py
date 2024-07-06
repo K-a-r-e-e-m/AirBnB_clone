@@ -14,7 +14,8 @@ Base = declarative_base()
 
 
 class BaseModel:
-    """Base class that defines all common attributes/methods for other classes"""
+    """Base class that defines all common
+    attributes/methods for other classes"""
 
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
@@ -22,7 +23,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initialize a new class BaseModel."""
-        self.id = str(uuid4()) # Unique ID for each base model
+        self.id = str(uuid4())  # Unique ID for each base model
         self.created_at = self.updated_at = datetime.now()
         # if kwargs:
         #     for key, value in kwargs.items():
@@ -38,7 +39,8 @@ class BaseModel:
         # models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """Returns a dictionary containing all
+        keys/values of __dict__ of the instance"""
         # get a copy from __dict__ to update it
         new_dict = self.__dict__.copy()
         # Add the class name
