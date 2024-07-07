@@ -26,8 +26,9 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         '''test save method'''
+        update = self.inst.updated_at
         self.inst.save()
-        self.assertNotEqual(self.inst.updated_at, self.inst.created_at)
+        self.assertNotEqual(update, self.inst.updated_at)
 
     def test_to_dict(self):
         '''Test the method that return dictionary of instance'''
