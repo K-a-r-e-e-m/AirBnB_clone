@@ -2,41 +2,48 @@
 """
 BaseModel class.
 """
-import models
-from uuid import uuid4
 from datetime import datetime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column
-from sqlalchemy import DateTime
-from sqlalchemy import String
+from uuid import uuid4
+import models
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column
+# from sqlalchemy import DateTime
+# from sqlalchemy import String
 
-Base = declarative_base()
+# Base = declarative_base()
 
 
 class BaseModel:
     """Base class that defines all common
     attributes/methods for other classes"""
 
-    id = Column(String(60), primary_key=True, nullable=False)
-    created_at = Column(DateTime, nullable=False, default=datetime.now())
-    updated_at = Column(DateTime, nullable=False, default=datetime.now())
+    # id = Column(String(60), primary_key=True, nullable=False)
+    # created_at = Column(DateTime, nullable=False, default=datetime.now())
+    # updated_at = Column(DateTime, nullable=False, default=datetime.now())
 
     def __init__(self, *args, **kwargs):
         """Initialize a new class BaseModel."""
-        self.id = str(uuid4())  # Unique ID for each base model
-        self.created_at = self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    # strptime returns a datetime object
-                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                # Set all value for all attriubutes except '__class__' key
-                if key != "__class__":
+                if key == 'created_at' or key == 'updated_at':
+                    # strptime returns a datetime object from str object
+                    setattr(self, key,
+                            datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                elif key == '__class__':
+                    continue
+                else:
                     setattr(self, key, value)
+
+        else:
+            self.id = str(uuid4())  # Unique ID for each base model
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def save(self):
         """save method that update the time"""
         self.updated_at = datetime.now()
+        models.storage.save()
         # models.storage.new(self)
         # models.storage.save()
 
