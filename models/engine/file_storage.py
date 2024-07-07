@@ -1,53 +1,48 @@
 #!/usr/bin/python3
-"""
-    class FileStorage
-"""
+'''This module have class FileStorage that serializes instances
+to a JSON file and deserializes JSON file to instances'''
 import json
-import models
+from models.base_model import BaseModel
 
 
 class FileStorage:
-    """
-        file storage.
-    """
+    '''Serialize and deserializes in json file'''
     __file_path = "file.json"
     __objects = {}
+    class_map = {
+        'BaseModel': BaseModel
+    }
 
     def all(self):
-        """
-            Return a dictionary
-        """
+        """Return a dictionary"""
         return self.__objects
 
     def new(self, obj):
-        """
-            name method
-        """
-        key = str(obj.__class__.__name__) + "." + str(obj.id)
-        value_dict = obj
-        FileStorage.__objects[key] = value_dict
+        '''sets in __objects the obj with key <obj class name>.id'''
+        if obj:
+            key = f"{self.__class__.__name__}.{obj.id}"
+            self.__objects[key] = obj
 
     def save(self):
-        """
-            convert to json
-        """
-        dct = {}
-        for key, value in FileStorage.__objects.items():
-            dct[key] = value.to_dict()
-
-        with open(FileStorage.__file_path, mode='w', encoding="UTF8") as name:
-            json.dump(dct, name)
+        '''serializes __objects to the JSON file (path: __file_path)'''
+        obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        with open(self.__file_path, 'w') as json_file:
+            json.dump(obj_dict, json_file)
 
     def reload(self):
-        """
-            convert to string
-        """
+        '''deserializes the JSON file to __objects'''
         try:
-            with open(FileStorage.__file_path, encoding="UTF8") as name:
-                FileStorage.__objects = json.load(name)
-            for key, value in FileStorage.__objects.items():
-                class_name = value["__class__"]
-                class_name = models.classes[class_name]
-                FileStorage.__objects[key] = class_name(**value)
-        except FileNotFoundError:
+            with open(self.__file_path, 'r') as json_file:
+                obj_dict = json.load(json_file)
+                for key, val in obj_dict.items():
+                    class_name = val['__class__']
+                    obj = self.class_map[class_name](**val)
+                    self.__objects[key] = obj
+    # We can use eval or globals() instead of a class map.
+    # However, eval have a security risk because it can execute arbitrary code.
+    # globals() may be confusing, it returns a dictionary containing
+    # all global variables, functions, and classes in the current module.
+    # Using a class map is a safer and more explicit method to dynamically
+    # create instances of classes.
+        except Exception:
             pass
