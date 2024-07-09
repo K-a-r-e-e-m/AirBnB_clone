@@ -7,7 +7,6 @@ import shlex
 import cmd
 from models.base_model import BaseModel
 from models import storage
-from models.engine.file_storage import FileStorage
 from models.user import User
 from models.state import State
 from models.city import City
@@ -38,35 +37,97 @@ class HBNBCommand(cmd.Cmd):
         saves it to the JSON file
         and prints the id
         """
-        self.comnd = line.split()
-        if (len(self.comnd) < 2):
+        args = line.split()
+        if len(args) < 1:
             print('** class name missing **')
-        elif (self.comnd[2]): 
+        elif args[0] not in storage.class_map:
             print("** class doesn't exist **")
         else:
-            storage.save()
-            # print id
+            instance = storage.class_map[args[0]]()
+            instance.save()
+            print(instance.id)
 
-    def do_show(self):
+    def do_show(self, line):
         """This method prints the string representation of an instance
         based on the class name and id
         """
+        args = line.split()
+        all_objects = storage.all()
+        if len(args) < 1:
+            print('** class name missing **')
+        elif args[0] not in storage.class_map:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        elif f'{args[0]}.{args[1]}' not in all_objects:
+            print('** no instance found **')
+        else:
+            print(all_objects[f'{args[0]}.{args[1]}'])
 
-    def do_destroy(self):
+    def do_destroy(self, line):
         """This method deletes an instance based on the class name
         and id (save the change into the JSON file)
         """
+        args = line.split()
+        all_objects = storage.all()
+        if len(args) < 1:
+            print('** class name missing **')
+        elif args[0] not in storage.class_map:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        elif f'{args[0]}.{args[1]}' not in all_objects:
+            print('** no instance found **')
+        else:
+            del (all_objects[f'{args[0]}.{args[1]}'])
 
-    def do_all(self):
+    def do_all(self, line):
         """This method prints all string representation of all instances
         based or not on the class name
         """
+        args = line.split()
+        all_objects = storage.all()
+        if len(args) < 1:
+            print([str(val) for obj, val in all_objects.items()])
+        elif args[0] not in storage.class_map:
+            print("** class doesn't exist **")
+        else:
+            obj_list = []
+            for obj, val in all_objects.items():
+                obj_name_dot_id = obj.split('.')
+                obj_name = obj_name_dot_id[0]
+                if obj_name == args[0]:
+                    obj_list.append(str(val))
+            print(obj_list)
+        # print([
+        #       str(val) for obj, val in all_objects.items()
+        #       if obj.split('.')[0] == args[0]
+        # ])
 
-    def do_update(self):
+    def do_update(self, line):
         """This method Updates an instance based on the class
         name and id by adding or updating attribute
         (save the change into the JSON file)
         """
+        # shlex --> Split the string (line) using like shell syntax
+        # shlex is a smart parser input that respect the quotes
+        args = shlex.split(line)
+        all_objects = storage.all()
+        if len(args) < 1:
+            print('** class name missing **')
+        elif args[0] not in storage.class_map:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        elif f'{args[0]}.{args[1]}' not in all_objects:
+            print('** no instance found **')
+        elif len(args) < 3:
+            print('** attribute name missing **')
+        elif len(args) < 4:
+            print('** value missing **')
+        else:
+            obj = all_objects[f'{args[0]}.{args[1]}']
+            setattr(obj, args[2], args[3])
 
 
 if __name__ == '__main__':
