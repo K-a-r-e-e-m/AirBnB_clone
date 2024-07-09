@@ -52,3 +52,11 @@ class TestBaseModel(unittest.TestCase):
         '''test String representation of instance'''
         out = f'[{self.inst.__class__.__name__}] ({self.inst.id}) {self.inst.__dict__}'
         self.assertEqual(out, self.inst.__str__())
+
+    def test_save_updated_at(self):
+        '''Test save in BaseModel class'''
+        before = self.inst.updated_at
+        self.inst.save()
+        after = self.inst.updated_at
+        self.assertNotEqual(before, after)
+
