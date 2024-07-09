@@ -3,6 +3,7 @@
 to a JSON file and deserializes JSON file to instances'''
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -10,7 +11,8 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
     class_map = {
-        'BaseModel': BaseModel
+        'BaseModel': BaseModel,
+        'User': User
     }
 
     def all(self):
