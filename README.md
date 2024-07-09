@@ -49,14 +49,49 @@ destroy <class> <id>: Deletes the instance of the specified class with the given
 #### Examples
 Here are some examples of how to use the command interpreter:
 ```
-(mycmd) create User
-(mycmd) show User 1234-5678-9012
-(mycmd) all User
-(mycmd) update User 1234-5678-9012 name "John Doe"
-(mycmd) destroy User 1234-5678-9012
-(mycmd) quit
+(hbnb) create User
+(hbnb) show User 1234-5678-9012
+(hbnb) all User
+(hbnb) update User 1234-5678-9012 name "John Doe"
+(hbnb) destroy User 1234-5678-9012
+(hbnb) quit
 ```
+Your shell should work like this in interactive mode:
+```
+$ ./console.py
+(hbnb) help
 
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
+But also in non-interactive mode: (like the Shell project in C)
+```
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+```
 # Contributors 👨‍💻
 
 **Kareem Hany**
