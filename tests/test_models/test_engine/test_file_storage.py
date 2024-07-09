@@ -15,7 +15,7 @@ class TestFileStorage(unittest.TestCase):
         dic = inst.all()
         self.assertIsInstance(dic, dict)
 
-    def test_all(self):
+    def test_all_return(self):
         '''Test all method that return a dictionary'''
         inst = FileStorage()
         dic = inst.all()
