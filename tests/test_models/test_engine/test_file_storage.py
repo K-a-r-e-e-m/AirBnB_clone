@@ -24,3 +24,10 @@ class TestFileStorage(unittest.TestCase):
             out_dict = file.read()
             self.assertIn(f'BaseModel.{base.id}', out_dict)
 
+    def test_file(self):    
+        '''Test type of file'''
+        self.assertEqual(type(FileStorage._FileStorage__file_path), str)
+    
+    def test_objects(self):
+        '''Test type of objects'''
+        self.assertEqual(type(FileStorage._FileStorage__objects), dict)
