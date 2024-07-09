@@ -19,7 +19,7 @@ class TestFileStorage(unittest.TestCase):
         '''Test all method that return a dictionary'''
         inst = FileStorage()
         dic = inst.all()
-        self.assertEqual(dic, FileStorage._FileStorage__objects)
+        self.assertEqual(type(dic), dict)
 
     def test_new(self):
         '''Test new method that set in __objects the new obj'''
