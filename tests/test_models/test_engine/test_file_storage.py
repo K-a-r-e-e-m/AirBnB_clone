@@ -15,6 +15,12 @@ class TestFileStorage(unittest.TestCase):
         dic = inst.all()
         self.assertIsInstance(dic, dict)
 
+    def test_all(self):
+        '''Test all method that return a dictionary'''
+        inst = FileStorage()
+        dic = inst.all()
+        self.assertEqual(dic, FileStorage._FileStorage__objects)
+
     def test_new(self):
         '''Test new method that set in __objects the new obj'''
         base = BaseModel()
