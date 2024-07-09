@@ -79,7 +79,8 @@ class HBNBCommand(cmd.Cmd):
         elif f'{args[0]}.{args[1]}' not in all_objects:
             print('** no instance found **')
         else:
-            del (all_objects[f'{args[0]}.{args[1]}'])
+            del all_objects[f'{args[0]}.{args[1]}']
+            storage.save()  # Save changes to JSON file
 
     def do_all(self, line):
         """This method prints all string representation of all instances
@@ -128,6 +129,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj = all_objects[f'{args[0]}.{args[1]}']
             setattr(obj, args[2], args[3])
+            storage.save()  # Save changes to the JSON file
 
 
 if __name__ == '__main__':
