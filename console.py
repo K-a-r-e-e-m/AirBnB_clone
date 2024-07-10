@@ -124,6 +124,51 @@ class HBNBCommand(cmd.Cmd):
             setattr(obj, args[2], args[3])
             storage.save()  # Save changes to the JSON file
 
+    def default(self, line):
+        '''called on an input line when command prefix is not recognized'''
+        if '.' in line and '(' in line and ')' in line:
+            args = line.split()
+            # ex: User.update(id, attr)
+            class_name, method_call = line.split('.')
+            # class_name = 'User',  method_call = 'update(id, attr)'
+            method_name, args_str = method_call.split('(')
+            # method_name = 'update', args_str = 'id, attr)'
+            args_str = args_str.strip(')')
+            # args_str = 'id, attr'
+            args = [arg.strip() for arg in args_str.split(',')]
+            # args = [id, attr]
+
+            if class_name in storage.class_map:
+                if method_name == 'all':
+                    self.do_all(class_name)
+                elif method_name == 'count':
+                    self.do_count(class_name)
+                elif method_name == 'show':
+                    self.do_show(f'{class_name} {args[0]}')
+                elif method_name == 'destroy':
+                    self.do_destroy(f'{class_name} {args[0]}')
+                elif method_name == 'update':
+                    if len(args) == 3:
+                        self.do_update(f'{class_name} {args[0]} {args[1]}' +
+                                       f' {args[2]}')
+                    elif len(args) == 2:
+                        self.do_update(f'{class_name} {args[0]} {args[1]}')
+                else:
+                    return cmd.Cmd.default(self, line)
+            else:
+                return cmd.Cmd.default(self, line)
+        else:
+            return cmd.Cmd.default(self, line)
+
+    def do_count(self, class_name):
+        '''Count number of instances'''
+        count = 0
+        all_objects = storage.all()
+        for obj in all_objects:
+            if class_name in obj:
+                count += 1
+        print(count)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
