@@ -152,7 +152,8 @@ class HBNBCommand(cmd.Cmd):
                         self.do_update(f'{class_name} {args[0]} {args[1]}' +
                                        f' {args[2]}')
                     elif len(args) == 2:
-                        self.do_update(f'{class_name} {args[0]} {args[1]}')
+                        for key, val in args[1].items():
+                            self.do_update(f'{class_name} {args[0]} {key} {val}')
                 else:
                     return cmd.Cmd.default(self, line)
             else:
