@@ -8,7 +8,6 @@ from models import storage
 import shlex
 
 
-
 class HBNBCommand(cmd.Cmd):
     """This  is a simple command interprete"""
 
