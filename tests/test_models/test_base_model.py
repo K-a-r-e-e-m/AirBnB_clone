@@ -47,7 +47,6 @@ class TestBaseModel(unittest.TestCase):
         updated = out['updated_at']
         self.assertEqual(updated, self.inst.updated_at.isoformat())
 
-
     def test__str__(self):
         '''test String representation of instance'''
         out = f'[{self.inst.__class__.__name__}] ({self.inst.id}) {self.inst.__dict__}'
@@ -59,4 +58,3 @@ class TestBaseModel(unittest.TestCase):
         self.inst.save()
         after = self.inst.updated_at
         self.assertNotEqual(before, after)
-
