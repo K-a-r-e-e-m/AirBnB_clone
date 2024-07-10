@@ -105,7 +105,11 @@ class HBNBCommand(cmd.Cmd):
         """
         # shlex --> Split the string (line) using like shell syntax
         # shlex is a smart parser input that respect the quotes
-        args = shlex.split(line)
+        if type(line) is str:
+            args = shlex.split(line)
+        else:
+            args[2] = line.key()
+            args[3] = line.value()
         all_objects = storage.all()
         if len(args) < 1:
             print('** class name missing **')
@@ -152,8 +156,10 @@ class HBNBCommand(cmd.Cmd):
                         self.do_update(f'{class_name} {args[0]} {args[1]}' +
                                        f' {args[2]}')
                     elif len(args) == 2:
+                        args[1] = dict(args[1])
                         for key, val in args[1].items():
-                            self.do_update(f'{class_name} {args[0]} {key} {val}')
+                            self.do_update(f'{class_name} {args[0]} {key}'
+                                           f'{val}')
                 else:
                     return cmd.Cmd.default(self, line)
             else:
