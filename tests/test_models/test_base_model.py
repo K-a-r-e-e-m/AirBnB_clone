@@ -58,3 +58,16 @@ class TestBaseModel(unittest.TestCase):
         self.inst.save()
         after = self.inst.updated_at
         self.assertNotEqual(before, after)
+
+    def test_save_with_argument(self):
+        '''Test save with argumet'''
+        with self.assertRaises(TypeError):
+            self.inst.save(234)
+    
+    def test_save_with_file(self):
+        '''Test save to json file'''
+        inst = BaseModel()
+        self.inst.save()
+        with open('file.json', 'r') as f:
+            content = f.read()
+            self.assertIn(f'BaseModel.{inst.id}', content)
