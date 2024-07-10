@@ -135,7 +135,8 @@ class HBNBCommand(cmd.Cmd):
             # method_name = 'update', args_str = 'id, attr)'
             args_str = args_str.strip(')')
             # args_str = 'id, attr'
-            args = [arg.strip() for arg in args_str.split(',')]
+            args = [arg.strip().strip('"').strip("'")
+                    for arg in args_str.split(',')]
             # args = [id, attr]
 
             if class_name in storage.class_map:
@@ -152,7 +153,11 @@ class HBNBCommand(cmd.Cmd):
                         self.do_update(f'{class_name} {args[0]} {args[1]}' +
                                        f' {args[2]}')
                     elif len(args) == 2:
-                        self.do_update(f'{class_name} {args[0]} {args[1]}')
+                        update_dict = eval(args[1])
+                        update_args = [args[0]]
+                        update_args.append(update_dict)
+                        self.do_update(' '.join(update_args))
+
                 else:
                     return cmd.Cmd.default(self, line)
             else:
